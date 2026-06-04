@@ -15,7 +15,7 @@ const works = [
     category: "web",
     description: "AI 輔助中文寫作與批改工具，支援 OCR 手寫辨識、智能評分與 Claude API 回饋",
     tech: "HTML + Tesseract.js + Claude API",
-    thumbnail: "/images/thumbnails/writing-elf-cover.svg",
+    thumbnail: "/images/thumbnails/writing-elf-cover.jpeg",
     link: "https://lisruii.github.io/-/chinese-writing-tool.html",
     featured: true,
   },
