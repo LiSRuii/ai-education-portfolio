@@ -1,7 +1,7 @@
 const works = [
   {
     id: "li-bai",
-    title: "走進李白的詩世界",
+    title: "走進詩仙李白的世界",
     category: "web",
     description: "香港小學唐詩互動學習網站，沉浸式詩歌探索體驗",
     tech: "React + Vite + Tailwind CSS + Framer Motion",
