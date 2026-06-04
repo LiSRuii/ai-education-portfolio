@@ -11,8 +11,16 @@ export default function WorkCard({ work }) {
       className="group block rounded-xl border border-antique-gold/20 bg-white/60 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-antique-gold/60 hover:shadow-md"
     >
       {/* Thumbnail area */}
-      <div className="mb-4 flex h-40 items-center justify-center rounded-lg bg-antique-gold/10 text-4xl">
-        {work.thumbnail}
+      <div className="mb-4 flex h-40 items-center justify-center overflow-hidden rounded-lg bg-antique-gold/10">
+        {work.thumbnail.startsWith("/") || work.thumbnail.startsWith("http") ? (
+          <img
+            src={work.thumbnail}
+            alt={work.title}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <span className="text-4xl">{work.thumbnail}</span>
+        )}
       </div>
 
       {/* Title */}
