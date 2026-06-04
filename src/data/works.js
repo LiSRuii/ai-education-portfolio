@@ -6,7 +6,7 @@ const works = [
     description: "香港小學唐詩互動學習網站，12 頁沉浸式詩歌探索體驗",
     tech: "React + Vite + Tailwind CSS + Framer Motion",
     thumbnail: "/images/thumbnails/li-bai-thumb.png",
-    link: "http://127.0.0.1:5174/",
+    link: "https://lisruii.github.io/-/li-bai/",
     featured: true,
   },
   {
