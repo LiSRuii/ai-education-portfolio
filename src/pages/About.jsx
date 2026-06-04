@@ -28,13 +28,13 @@ export default function About() {
             <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-2xl border-2 border-antique-gold/30 shadow-md">
               <img
                 src="/images/profile.svg"
-                alt="李帥銳"
+                alt="李帥鋭"
                 className="h-full w-full object-cover"
               />
             </div>
 
             <div className="text-center md:text-left">
-              <h2 className="text-2xl font-bold text-ink font-serif">李帥銳</h2>
+              <h2 className="text-2xl font-bold text-ink font-serif">李帥鋭</h2>
               <p className="text-sm text-ink/50 font-sans">Li Shuairui</p>
               <div className="mt-3 flex flex-wrap justify-center gap-2 md:justify-start">
                 <span className="rounded-full bg-vermilion/10 px-3 py-1 text-xs font-medium text-vermilion">

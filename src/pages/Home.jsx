@@ -38,7 +38,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            李帥銳
+            李帥鋭
           </motion.h1>
           <motion.p
             className="mb-2 text-lg text-ink/70 font-serif"

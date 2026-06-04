@@ -40,7 +40,7 @@ export default function Navbar() {
           to="/"
           className="text-xl font-bold text-ink transition-colors hover:text-vermilion font-serif tracking-wide"
         >
-          李帥銳
+          李帥鋭
         </Link>
 
         {/* Desktop links */}

@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="mx-auto mb-4 h-px w-16 bg-vermilion/40" />
 
         <p className="mb-2 text-sm text-ink/60 font-serif">
-          &copy; 2026 李帥銳 &middot; AI 教育作品集
+          &copy; 2026 李帥鋭 &middot; AI 教育作品集
         </p>
 
         <div className="flex items-center justify-center gap-6 text-sm text-ink/50">
