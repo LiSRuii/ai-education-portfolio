@@ -2,13 +2,10 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const SKILLS = [
   "AI 應用開發",
-  "Web 前端開發",
-  "React / Vue",
-  "中文課程設計",
-  "互動教材製作",
   "AI Prompt 工程",
-  "Claude API 整合",
-  "多媒體教學內容創作",
+  "生成式 AI 課堂應用",
+  "AI 學習評量與回饋",
+  "AI 跨學科課程整合",
 ];
 
 export default function About() {

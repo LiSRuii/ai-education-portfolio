@@ -23,7 +23,7 @@ const works = [
     id: "mecha-transform",
     title: "機甲變身",
     category: "video",
-    description: "激發學生創意寫作與語言表達，將 AI 創作融入跨學科教學活動",
+    description: "可作為描寫文寫作導入材料，引導學生觀察角色外型、動作、場景等變化",
     tech: "AI 影片生成",
     thumbnail: "/images/thumbnails/mecha-cover.jpg",
     link: "https://drive.google.com/file/d/11NXbJbA9KtZM_V4d4IWti1i9ImSON5WB/view?usp=sharing",
