@@ -40,7 +40,7 @@ export default function Navbar() {
           to="/"
           className="text-xl font-bold text-ink transition-colors hover:text-vermilion font-serif tracking-wide"
         >
-          李帥鋭
+          李帥鋭｜AI作品集
         </Link>
 
         {/* Desktop links */}
