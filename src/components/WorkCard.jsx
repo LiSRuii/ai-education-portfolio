@@ -12,7 +12,13 @@ export default function WorkCard({ work }) {
     >
       {/* Thumbnail area */}
       <div className="mb-4 flex h-40 items-center justify-center overflow-hidden rounded-lg bg-antique-gold/10">
-        {work.thumbnail.startsWith("/") || work.thumbnail.startsWith("http") ? (
+        {work.thumbnail.startsWith("/") ? (
+          <img
+            src={import.meta.env.BASE_URL + work.thumbnail.slice(1)}
+            alt={work.title}
+            className="h-full w-full object-cover"
+          />
+        ) : work.thumbnail.startsWith("http") ? (
           <img
             src={work.thumbnail}
             alt={work.title}

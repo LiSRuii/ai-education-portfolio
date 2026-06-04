@@ -24,7 +24,7 @@ export default function About() {
             {/* Profile photo */}
             <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-2xl border-2 border-antique-gold/30 shadow-md">
               <img
-                src="/images/profile.jpg"
+                src={import.meta.env.BASE_URL + "images/profile.jpg"}
                 alt="李帥鋭"
                 className="h-full w-full object-cover"
               />
