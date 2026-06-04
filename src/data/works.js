@@ -35,8 +35,8 @@ const works = [
     category: "video",
     description: "AI 繪本故事影片，經典文學改編視覺化創作",
     tech: "AI 繪本生成",
-    thumbnail: "🖼️ 封面縮圖",
-    link: "#",
+    thumbnail: "/images/thumbnails/kafka-cover.svg",
+    link: "https://drive.google.com/file/d/1OxRETeHeD7f1GomCMQ-46sCEz4XbDshi/view?usp=drive_link",
     featured: false,
   },
 ];
