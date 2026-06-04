@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { featuredWorks } from "../data/works";
 import WorkCard from "../components/WorkCard";
 
@@ -17,22 +18,50 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-paper/40 via-paper/80 to-paper" />
 
         {/* Hero content */}
-        <div className="relative z-10 px-6 text-center">
-          <p className="mb-2 font-sans text-sm tracking-widest text-antique-gold uppercase">
+        <motion.div
+          className="relative z-10 px-6 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <motion.p
+            className="mb-2 font-sans text-sm tracking-widest text-antique-gold uppercase"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
             AI Education Portfolio
-          </p>
-          <h1 className="mb-3 text-5xl font-bold text-ink font-serif md:text-6xl">
+          </motion.p>
+          <motion.h1
+            className="mb-3 text-5xl font-bold text-ink font-serif md:text-6xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
             李帥銳
-          </h1>
-          <p className="mb-2 text-lg text-ink/70 font-serif">
+          </motion.h1>
+          <motion.p
+            className="mb-2 text-lg text-ink/70 font-serif"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
             AI 教育作品集
-          </p>
-          <p className="mb-10 text-base text-ink/50">
+          </motion.p>
+          <motion.p
+            className="mb-10 text-base text-ink/50"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
             用 AI 點亮中文教育的無限可能
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex items-center justify-center gap-4">
+          </motion.p>
+          <motion.div
+            className="flex items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.8 }}
+          >
             <Link
               to="/works"
               className="inline-flex items-center gap-2 rounded-full bg-vermilion px-7 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-vermilion-light hover:shadow-md"
@@ -46,8 +75,8 @@ export default function Home() {
             >
               關於我
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* ── Featured Works Section ── */}
