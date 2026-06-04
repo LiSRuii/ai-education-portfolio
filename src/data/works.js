@@ -25,8 +25,8 @@ const works = [
     category: "video",
     description: "AI 生成動畫影片，科幻機甲主題創意作品",
     tech: "AI 影片生成",
-    thumbnail: "🖼️ 封面縮圖",
-    link: "#",
+    thumbnail: "/images/thumbnails/mecha-cover.jpg",
+    link: "https://drive.google.com/file/d/11NXbJbA9KtZM_V4d4IWti1i9ImSON5WB/view?usp=sharing",
     featured: true,
   },
   {
