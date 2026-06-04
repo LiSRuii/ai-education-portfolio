@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="g1" cx="40%" cy="30%">
+      <stop offset="0%" stop-color="#B8956A" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FBF7F0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="70%" cy="60%">
+      <stop offset="0%" stop-color="#5B7B8A" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FBF7F0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="#FBF7F0"/>
+  <rect width="1200" height="800" fill="url(#g1)"/>
+  <rect width="1200" height="800" fill="url(#g2)"/>
+  <!-- Simple mountain silhouette -->
+  <path d="M0 600 Q200 450 400 520 Q550 350 700 480 Q850 300 1000 450 Q1100 380 1200 420 L1200 800 L0 800Z" fill="#2C2416" opacity="0.06"/>
+  <path d="M0 650 Q300 550 500 600 Q650 480 800 580 Q900 500 1200 550 L1200 800 L0 800Z" fill="#2C2416" opacity="0.04"/>
+</svg>

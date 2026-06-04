@@ -12,7 +12,7 @@ export default function Home() {
         {/* Ink-wash background layer */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+          style={{ backgroundImage: "url('/images/hero-bg.svg')" }}
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-paper/40 via-paper/80 to-paper" />
