@@ -33,7 +33,7 @@ const works = [
     id: "kafka-bug",
     title: "《卡夫卡變蟲記》",
     category: "video",
-    description: "以 AI 活化經典繪本作品，幫助學生視覺化理解文本，加深閱讀體驗",
+    description: "通過影像重塑經典繪本作品，幫助學生視覺化理解文本，加深閱讀體驗",
     tech: "AI 繪本生成",
     thumbnail: "/images/thumbnails/kafka-cover.jpg",
     link: "https://drive.google.com/file/d/1OxRETeHeD7f1GomCMQ-46sCEz4XbDshi/view?usp=drive_link",
