@@ -1,5 +1,15 @@
 const works = [
   {
+    id: "zi-li-qian-kun",
+    title: "字裏乾坤",
+    category: "web",
+    description: "漢字探源互動教學網站，帶領學生探索漢字形音義的演變與文化底蘊",
+    tech: "React + TypeScript + Vite + Tailwind CSS",
+    thumbnail: "/images/thumbnails/zi-li-qian-kun-cover.png",
+    link: "http://localhost:5173/principles",
+    featured: true,
+  },
+  {
     id: "li-bai",
     title: "走進詩仙李白的世界",
     category: "web",
