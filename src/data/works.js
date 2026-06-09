@@ -6,7 +6,7 @@ const works = [
     description: "漢字探源互動教學網站，帶領學生探索漢字形音義的演變與文化底蘊",
     tech: "React + TypeScript + Vite + Tailwind CSS",
     thumbnail: "/images/thumbnails/zi-li-qian-kun-cover.png",
-    link: "http://localhost:5173/principles",
+    link: "https://lisruii.github.io/-/zi-li-qian-kun/",
     featured: true,
   },
   {
