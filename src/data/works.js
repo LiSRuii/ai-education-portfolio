@@ -20,6 +20,16 @@ const works = [
     featured: true,
   },
   {
+    id: "bu-jian-lian-zi-lu",
+    title: "部件煉字爐",
+    category: "web",
+    description: "香港小學 P.3-P.4 漢字學習互動網站，透過組合部件認識漢字結構，含限時挑戰、連擊獎勵與煉字爐組合動畫",
+    tech: "HTML + CSS + JavaScript (Vanilla) + Web Audio API",
+    thumbnail: "/images/thumbnails/bu-jian-lian-zi-lu-cover.jpeg",
+    link: "https://lisruii.github.io/-/bu-jian-lian-zi-lu/",
+    featured: true,
+  },
+  {
     id: "writing-elf",
     title: "寫作小精靈",
     category: "web",
