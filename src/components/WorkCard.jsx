@@ -1,7 +1,26 @@
-import { ExternalLink, Monitor, Film } from "lucide-react";
+import { BookOpen, ExternalLink, Monitor, Film } from "lucide-react";
+
+const CATEGORY_BADGES = {
+  web: {
+    icon: Monitor,
+    label: "Web App",
+    className: "bg-vermilion/10 text-vermilion",
+  },
+  teaching: {
+    icon: BookOpen,
+    label: "教學資源",
+    className: "bg-antique-gold/10 text-antique-gold",
+  },
+  video: {
+    icon: Film,
+    label: "影片",
+    className: "bg-cyan-blue/10 text-cyan-blue",
+  },
+};
 
 export default function WorkCard({ work }) {
-  const isVideo = work.category === "video";
+  const badge = CATEGORY_BADGES[work.category] ?? CATEGORY_BADGES.web;
+  const BadgeIcon = badge.icon;
 
   return (
     <a
@@ -42,21 +61,9 @@ export default function WorkCard({ work }) {
       {/* Category tag + Link indicator */}
       <div className="flex items-center justify-between">
         <span
-          className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${
-            isVideo
-              ? "bg-cyan-blue/10 text-cyan-blue"
-              : "bg-vermilion/10 text-vermilion"
-          }`}
+          className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium ${badge.className}`}
         >
-          {isVideo ? (
-            <>
-              <Film size={12} /> 影片
-            </>
-          ) : (
-            <>
-              <Monitor size={12} /> Web App
-            </>
-          )}
+          <BadgeIcon size={12} /> {badge.label}
         </span>
 
         <span className="flex items-center gap-1 text-xs text-antique-gold opacity-0 transition-opacity group-hover:opacity-100">

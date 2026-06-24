@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小六記敘文寫作增潤</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202124;
+      --muted: #5f6368;
+      --paper: #fbfaf7;
+      --panel: #ffffff;
+      --line: #d8d2c8;
+      --blue: #315a82;
+      --blue-soft: #e7f0f8;
+      --green: #2f6f57;
+      --green-soft: #e9f5ef;
+      --red: #a5453d;
+      --red-soft: #fae9e6;
+      --gold: #a76f19;
+      --gold-soft: #fff2d6;
+      --shadow: 0 16px 36px rgba(40, 43, 48, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(231, 240, 248, 0.7), rgba(251, 250, 247, 0) 360px),
+        var(--paper);
+      font-family: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 282px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      background: #ffffff;
+      border-right: 1px solid var(--line);
+      overflow: auto;
+    }
+
+    .brand {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand strong {
+      font-size: 1.1rem;
+      line-height: 1.35;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .progress-box {
+      margin-bottom: 18px;
+      padding: 14px;
+      background: var(--green-soft);
+      border: 1px solid #c7e1d4;
+      border-radius: var(--radius);
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #244b3c;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .progress-track {
+      height: 10px;
+      margin-top: 10px;
+      overflow: hidden;
+      background: #d8e9df;
+      border-radius: 999px;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: var(--green);
+      transition: width 0.2s ease;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav button {
+      min-height: 42px;
+      padding: 9px 12px;
+      color: var(--ink);
+      text-align: left;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+    }
+
+    .nav button:hover,
+    .nav button:focus-visible {
+      background: var(--blue-soft);
+      outline: none;
+    }
+
+    .nav button.active {
+      color: #123958;
+      background: var(--blue-soft);
+      border-color: #b8d0e4;
+      font-weight: 700;
+    }
+
+    main {
+      min-width: 0;
+      padding: 28px clamp(18px, 4vw, 56px) 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 16px;
+      max-width: 1120px;
+      margin: 0 auto 24px;
+      padding: 28px;
+      background:
+        linear-gradient(90deg, rgba(49, 90, 130, 0.92), rgba(47, 111, 87, 0.78)),
+        radial-gradient(circle at 80% 20%, rgba(255, 242, 214, 0.75), transparent 30%);
+      color: #ffffff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 1.04rem;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .layout {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section {
+      display: none;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 26px rgba(40, 43, 48, 0.07);
+      overflow: hidden;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px 26px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-header p {
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .section-body {
+      display: grid;
+      gap: 18px;
+      padding: 24px 26px 28px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 10px;
+      color: #123958;
+      background: var(--blue-soft);
+      border: 1px solid #c9dcec;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .box {
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .box.soft-blue {
+      background: var(--blue-soft);
+      border-color: #c9dcec;
+    }
+
+    .box.soft-green {
+      background: var(--green-soft);
+      border-color: #c7e1d4;
+    }
+
+    .box.soft-gold {
+      background: var(--gold-soft);
+      border-color: #efd39d;
+    }
+
+    .box.soft-red {
+      background: var(--red-soft);
+      border-color: #edc7c1;
+    }
+
+    .box p + p,
+    .box ul,
+    .box ol {
+      margin-top: 10px;
+    }
+
+    ul,
+    ol {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 5px;
+    }
+
+    .sample {
+      min-height: 180px;
+      padding: 16px;
+      background: #fcfcfb;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      white-space: pre-line;
+    }
+
+    .sample.bad {
+      border-left: 5px solid var(--red);
+    }
+
+    .sample.good {
+      border-left: 5px solid var(--green);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      min-height: 40px;
+      padding: 8px 14px;
+      color: #ffffff;
+      background: var(--blue);
+      border-radius: var(--radius);
+      font-weight: 700;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background: #214868;
+      outline: none;
+    }
+
+    .btn.secondary {
+      color: #183d5a;
+      background: var(--blue-soft);
+      border: 1px solid #b8d0e4;
+    }
+
+    .btn.secondary:hover,
+    .btn.secondary:focus-visible {
+      background: #d9e9f5;
+    }
+
+    .btn.green {
+      background: var(--green);
+    }
+
+    .btn.green:hover,
+    .btn.green:focus-visible {
+      background: #245b47;
+    }
+
+    .feedback {
+      min-height: 48px;
+      padding: 12px 14px;
+      background: #f4f6f8;
+      border: 1px solid #d9dee3;
+      border-radius: var(--radius);
+      color: var(--ink);
+    }
+
+    .feedback.good {
+      background: var(--green-soft);
+      border-color: #b7dcc9;
+    }
+
+    .feedback.warn {
+      background: var(--gold-soft);
+      border-color: #e5ca94;
+    }
+
+    .mini-title {
+      margin-bottom: 8px;
+      color: #183d5a;
+      font-weight: 800;
+    }
+
+    .element-list {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .element {
+      min-height: 110px;
+      padding: 13px 10px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .element strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--green);
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-weight: 700;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: 1px solid #c7cdd4;
+      border-radius: var(--radius);
+      background: #ffffff;
+      color: var(--ink);
+    }
+
+    input[type="text"] {
+      min-height: 42px;
+      padding: 8px 10px;
+    }
+
+    textarea {
+      min-height: 130px;
+      padding: 10px 12px;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      outline: 3px solid rgba(49, 90, 130, 0.18);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .plan-preview {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      background: #fcfcfb;
+      border: 1px dashed #b8c2cc;
+      border-radius: var(--radius);
+    }
+
+    .sentence-bank {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-weight: 500;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--green);
+      flex: 0 0 auto;
+    }
+
+    .rubric {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .rubric th,
+    .rubric td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .rubric th {
+      background: var(--blue-soft);
+      color: #173b58;
+    }
+
+    .rubric tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .word-count {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    .print-only {
+      display: none;
+    }
+
+    @media (max-width: 940px) {
+      .shell {
+        display: block;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+        padding: 16px;
+      }
+
+      .nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-header {
+        display: grid;
+      }
+
+      .grid-two,
+      .grid-three,
+      .form-grid,
+      .sentence-bank {
+        grid-template-columns: 1fr;
+      }
+
+      .element-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      main {
+        padding: 16px 12px 40px;
+      }
+
+      .hero,
+      .section-header,
+      .section-body {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
+      .nav {
+        grid-template-columns: 1fr;
+      }
+
+      .element-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .sidebar,
+      .hero-actions,
+      .button-row,
+      .progress-box {
+        display: none;
+      }
+
+      .shell {
+        display: block;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      .hero,
+      .section {
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .section {
+        display: block;
+        page-break-after: always;
+      }
+
+      .print-only {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="教材導覽">
+      <div class="brand">
+        <strong>小六記敘文寫作增潤</strong>
+        <span>由流水帳變成好故事</span>
+      </div>
+
+      <div class="progress-box" aria-live="polite">
+        <div class="progress-label">
+          <span>學習進度</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <nav class="nav" id="navModules">
+        <button class="active" data-section="compare">1. 好文章長甚麼樣</button>
+        <button data-section="sixElements">2. 記敘文六要素</button>
+        <button data-section="plotBuilder">3. 情節轉折</button>
+        <button data-section="characterDetail">4. 人物描寫</button>
+        <button data-section="sentenceUpgrade">5. 句子升級</button>
+        <button data-section="paragraphRepair">6. 段落修補</button>
+        <button data-section="writingTask">7. 完整寫作任務</button>
+        <button data-section="selfCheck">8. 自評表</button>
+        <button data-section="teacherNotes">教師提示</button>
+      </nav>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <span class="tag">中文寫作增潤教材</span>
+        <h1>小六記敘文寫作增潤</h1>
+        <p>本教材以記敘文為主，幫助學生掌握清楚交代、具體描寫、情節轉折和結尾感悟，逐步把普通事件寫成有畫面、有層次、有感受的文章。</p>
+        <div class="hero-actions">
+          <button class="btn" onclick="switchSection('sentenceUpgrade')">開始實戰</button>
+          <button class="btn secondary" onclick="window.print()">列印教材</button>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="section active" id="compare">
+          <div class="section-header">
+            <div>
+              <h2>1. 好文章長甚麼樣</h2>
+              <p>先比較兩段同題文章，學生會更容易明白：記敘文不是把事情一件一件列出來，而是要讓讀者看見過程，感受到人物的變化。</p>
+            </div>
+            <span class="tag">導入</span>
+          </div>
+          <div class="section-body">
+            <div class="grid-two">
+              <article class="sample bad">
+                <h3>普通版本：像流水帳</h3>
+                <p>上星期五，我參加了班際接力賽。我很緊張。比賽開始後，我努力跑。最後我們班贏了，大家都很開心。這件事令我很難忘。</p>
+              </article>
+              <article class="sample good">
+                <h3>升級版本：有畫面和感受</h3>
+                <p>上星期五，操場上擠滿了同學，打氣聲一浪接一浪。我站在跑道旁，手心滲出汗水，眼睛一直盯着前方的隊友。接過接力棒的一刻，我只聽見耳邊的風聲和同學的呼喊。衝過終點後，隊友一擁而上，我忽然明白：勝利不只是跑得快，更是大家願意一起堅持到底。</p>
+              </article>
+            </div>
+            <div class="box soft-gold">
+              <p class="mini-title">知識點</p>
+              <p>好記敘文通常有三個特點：事情交代清楚、描寫具體、結尾有感悟。學生寫作時，不只回答「發生了甚麼」，還要回答「當時怎樣發生」、「人物有甚麼反應」、「這件事帶來甚麼改變」。</p>
+            </div>
+            <div class="button-row">
+              <button class="btn green" onclick="toggleAnalysis()">查看分析</button>
+              <button class="btn secondary" onclick="switchSection('sixElements')">下一步：六要素</button>
+            </div>
+            <div class="feedback" id="compareAnalysis">按「查看分析」，看看升級版本用了哪些寫作技巧。</div>
+          </div>
+        </section>
+
+        <section class="section" id="sixElements">
+          <div class="section-header">
+            <div>
+              <h2>2. 記敘文六要素</h2>
+              <p>六要素是記敘文的骨架。骨架清楚，讀者才知道故事在何時、何地、由誰、因何而起，最後怎樣收結。</p>
+            </div>
+            <span class="tag">知識點</span>
+          </div>
+          <div class="section-body">
+            <div class="element-list">
+              <div class="element"><strong>時間</strong><span>事情發生在甚麼時候？</span></div>
+              <div class="element"><strong>地點</strong><span>事情發生在哪裏？環境如何？</span></div>
+              <div class="element"><strong>人物</strong><span>誰參與其中？人物關係如何？</span></div>
+              <div class="element"><strong>起因</strong><span>事情為甚麼會發生？</span></div>
+              <div class="element"><strong>經過</strong><span>事情怎樣發展？有沒有困難或轉折？</span></div>
+              <div class="element"><strong>結果</strong><span>事情最後怎樣？人物有甚麼感悟？</span></div>
+            </div>
+            <div class="box soft-blue">
+              <p class="mini-title">小提醒</p>
+              <p>小六學生不應只把六要素列出來，而要把它們自然放進文章。尤其是「經過」部分，要寫得最具體，因為那是故事最重要的發展。</p>
+            </div>
+            <div class="grid-two">
+              <div class="box">
+                <h3>快速練習</h3>
+                <p>題目：「一次難忘的經歷」</p>
+                <ul>
+                  <li>時間：放學後、運動會當天、旅行途中</li>
+                  <li>地點：課室、操場、郊野公園、家中</li>
+                  <li>人物：我、同學、老師、家人</li>
+                  <li>起因：比賽、誤會、挑戰、突發事情</li>
+                </ul>
+              </div>
+              <div class="box soft-green">
+                <h3>教師追問</h3>
+                <p>「這件事為甚麼值得寫？」如果學生只能回答「因為很開心」，可追問：「你學會了甚麼？你和別人的關係有沒有改變？你對自己有沒有新的認識？」</p>
+              </div>
+            </div>
+            <div class="button-row">
+              <button class="btn secondary" onclick="switchSection('compare')">返回</button>
+              <button class="btn green" onclick="switchSection('plotBuilder')">下一步：情節轉折</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="plotBuilder">
+          <div class="section-header">
+            <div>
+              <h2>3. 情節要有轉折</h2>
+              <p>不少學生的文章像日記清單，原因是事情沒有重點。用「開始、問題、嘗試、結果、感悟」可以幫助故事有推進。</p>
+            </div>
+            <span class="tag">情節設計</span>
+          </div>
+          <div class="section-body">
+            <div class="box soft-gold">
+              <p class="mini-title">知識點</p>
+              <p>一篇記敘文可以這樣鋪排：平靜開始 → 問題出現 → 嘗試解決 → 最緊張一刻 → 結果與感悟。轉折不一定是大事件，也可以是一句話、一個動作、一個意外發現。</p>
+            </div>
+            <form class="form-grid" id="planForm">
+              <label>平靜開始
+                <input type="text" id="planStart" placeholder="例：我以為這只是一次普通的接力練習">
+              </label>
+              <label>問題出現
+                <input type="text" id="planProblem" placeholder="例：隊友突然扭傷腳，大家都慌了">
+              </label>
+              <label>嘗試解決
+                <input type="text" id="planAction" placeholder="例：我們重新分配棒次，互相鼓勵">
+              </label>
+              <label>最緊張一刻
+                <input type="text" id="planPeak" placeholder="例：我接棒時落後了半個身位">
+              </label>
+              <label>結果
+                <input type="text" id="planResult" placeholder="例：我們沒有放棄，最後追回名次">
+              </label>
+              <label>感悟
+                <input type="text" id="planReflection" placeholder="例：我明白合作比個人表現更重要">
+              </label>
+            </form>
+            <div class="button-row">
+              <button class="btn green" type="button" onclick="buildPlotPreview()">生成情節大綱</button>
+              <button class="btn secondary" type="button" onclick="clearPlan()">清空</button>
+            </div>
+            <div class="plan-preview" id="plotPreview">
+              <strong>情節大綱預覽</strong>
+              <p class="small-note">填寫上方欄位後，按「生成情節大綱」。</p>
+            </div>
+            <div class="button-row">
+              <button class="btn secondary" onclick="switchSection('sixElements')">返回</button>
+              <button class="btn green" onclick="switchSection('characterDetail')">下一步：人物描寫</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="characterDetail">
+          <div class="section-header">
+            <div>
+              <h2>4. 人物描寫</h2>
+              <p>記敘文要寫人，也要寫人的變化。把「心情詞」變成動作、語言、神態和心理，文章便會更具體。</p>
+            </div>
+            <span class="tag">描寫技巧</span>
+          </div>
+          <div class="section-body">
+            <div class="grid-four"></div>
+            <div class="sentence-bank">
+              <div class="box soft-blue">
+                <h3>動作</h3>
+                <p>握緊拳頭、低下頭、停住腳步、把紙條揉成一團</p>
+              </div>
+              <div class="box soft-green">
+                <h3>語言</h3>
+                <p>「不用怕，我們再試一次。」一句說話可以表現人物性格。</p>
+              </div>
+              <div class="box soft-gold">
+                <h3>神態與心理</h3>
+                <p>眉頭緊皺、眼眶發熱、心裏像壓着石頭、暗暗提醒自己</p>
+              </div>
+            </div>
+            <div class="box">
+              <h3>示範：把空泛句改具體</h3>
+              <p>原句：我很害怕。</p>
+              <p>升級：我的雙腳像被釘在地上，手指緊緊捏着衣角，心裏不停問自己：「如果失敗了怎麼辦？」</p>
+            </div>
+            <div class="box soft-red">
+              <p class="mini-title">常見問題</p>
+              <p>不要一味堆砌成語，例如「我七上八下、忐忑不安、心驚膽戰」。更好的做法是選兩三個細節，讓讀者自己感受到人物的心情。</p>
+            </div>
+            <div class="button-row">
+              <button class="btn secondary" onclick="switchSection('plotBuilder')">返回</button>
+              <button class="btn green" onclick="switchSection('sentenceUpgrade')">下一步：句子升級</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="sentenceUpgrade">
+          <div class="section-header">
+            <div>
+              <h2>5. 實戰一：句子升級</h2>
+              <p>把空泛句改寫成具體句。目標不是寫得很長，而是加入有用細節，讓讀者看得見、聽得到、感受到。</p>
+            </div>
+            <span class="tag">實戰</span>
+          </div>
+          <div class="section-body">
+            <div class="box soft-blue">
+              <p class="mini-title">任務</p>
+              <p>請把「我很緊張」改寫成一至兩句具體描寫。你可以加入動作、神態、心理或感官描寫。</p>
+            </div>
+            <label>你的升級句子
+              <textarea id="upgradeInput" placeholder="例：我的手心滲出汗水，心跳得像打鼓一樣，連老師叫我的名字也差點聽不見。"></textarea>
+            </label>
+            <div class="button-row">
+              <button class="btn green" onclick="checkSentenceUpgrade()">檢查句子</button>
+              <button class="btn secondary" onclick="insertSentenceExample()">放入示例</button>
+            </div>
+            <div class="feedback" id="upgradeFeedback">完成後按「檢查句子」，系統會提示你是否寫得具體。</div>
+            <div class="grid-three">
+              <div class="box">
+                <h3>基本</h3>
+                <p>我很緊張，怕自己會失敗。</p>
+              </div>
+              <div class="box">
+                <h3>較好</h3>
+                <p>我的心跳得很快，手也開始冒汗。</p>
+              </div>
+              <div class="box soft-green">
+                <h3>更好</h3>
+                <p>我的手心滲出汗水，喉嚨像被堵住似的，只能反覆在心裏說：「冷靜，先深呼吸。」</p>
+              </div>
+            </div>
+            <div class="button-row">
+              <button class="btn secondary" onclick="switchSection('characterDetail')">返回</button>
+              <button class="btn green" onclick="switchSection('paragraphRepair')">下一步：段落修補</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="paragraphRepair">
+          <div class="section-header">
+            <div>
+              <h2>6. 實戰二：段落修補</h2>
+              <p>給一段平淡文字加上情節和描寫。這個練習可作小組討論，也可讓學生個人修改。</p>
+            </div>
+            <span class="tag">實戰</span>
+          </div>
+          <div class="section-body">
+            <div class="box soft-gold">
+              <p class="mini-title">修改方向</p>
+              <p>請在段落中加入至少兩類描寫：人物動作、人物語言、心理活動、環境氣氛。也要讓讀者知道事情為甚麼難忘。</p>
+            </div>
+            <label>修改這段文字
+              <textarea id="paragraphText">今天是中文默書。我沒有溫習，所以很害怕。老師派卷後，我不懂得寫很多字。最後我成績不好，我很後悔。</textarea>
+            </label>
+            <div class="button-row">
+              <button class="btn green" onclick="checkParagraphRepair()">檢查段落</button>
+              <button class="btn secondary" onclick="insertParagraphExample()">查看示例方向</button>
+            </div>
+            <div class="feedback" id="paragraphFeedback">修改後按「檢查段落」。</div>
+            <div class="box soft-green">
+              <h3>參考改寫方向</h3>
+              <p>中文默書前，課室裏只聽見翻書聲。我低頭看着空白的溫習紙，心裏像壓着一塊石頭。老師把試卷放到我桌上時，我握着筆，卻連第一個詞語也想不起來。那一刻，我才明白平日拖延溫習，最後只會由自己承擔後果。</p>
+            </div>
+            <div class="button-row">
+              <button class="btn secondary" onclick="switchSection('sentenceUpgrade')">返回</button>
+              <button class="btn green" onclick="switchSection('writingTask')">下一步：完整寫作</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="writingTask">
+          <div class="section-header">
+            <div>
+              <h2>7. 實戰三：完整寫作任務</h2>
+              <p>完成一篇記敘文。學生可先用情節大綱整理內容，再把大綱發展成文章。</p>
+            </div>
+            <span class="tag">寫作任務</span>
+          </div>
+          <div class="section-body">
+            <div class="grid-two">
+              <div class="box soft-blue">
+                <h3>題目一</h3>
+                <p>那一次，我學會了堅持</p>
+              </div>
+              <div class="box soft-green">
+                <h3>題目二</h3>
+                <p>一次難忘的經歷</p>
+              </div>
+            </div>
+            <div class="box soft-gold">
+              <p class="mini-title">寫作要求</p>
+              <ul>
+                <li>字數建議：400至500字。</li>
+                <li>清楚交代六要素。</li>
+                <li>經過部分要有轉折或最緊張一刻。</li>
+                <li>至少加入兩種人物描寫。</li>
+                <li>結尾要寫出感悟，不只寫「我很開心」或「我很難忘」。</li>
+              </ul>
+            </div>
+            <label>我的文章草稿
+              <textarea id="studentDraft" placeholder="在這裏開始寫作。可以先寫開首，再慢慢補充經過和感悟。"></textarea>
+            </label>
+            <div class="word-count" id="draftCount">0 字</div>
+            <div class="button-row">
+              <button class="btn green" onclick="saveDraft()">儲存草稿</button>
+              <button class="btn secondary" onclick="loadDraft()">載入草稿</button>
+              <button class="btn secondary" onclick="switchSection('selfCheck')">完成後自評</button>
+            </div>
+            <div class="feedback" id="draftFeedback">草稿會儲存在此瀏覽器中，方便下次打開同一檔案時繼續修改。</div>
+          </div>
+        </section>
+
+        <section class="section" id="selfCheck">
+          <div class="section-header">
+            <div>
+              <h2>8. 自評表</h2>
+              <p>好文章是改出來的。完成初稿後，請按以下準則檢查，再修訂一次。</p>
+            </div>
+            <span class="tag">修訂</span>
+          </div>
+          <div class="section-body">
+            <div class="checklist">
+              <label><input type="checkbox" data-progress> 我的文章有清楚交代時間、地點和人物。</label>
+              <label><input type="checkbox" data-progress> 我寫出了事情的起因、經過和結果。</label>
+              <label><input type="checkbox" data-progress> 經過部分有轉折、困難或最緊張一刻。</label>
+              <label><input type="checkbox" data-progress> 我至少加入兩種描寫，例如動作、語言、神態、心理或環境。</label>
+              <label><input type="checkbox" data-progress> 我的結尾有感悟，能說明這件事帶來的改變或啟發。</label>
+              <label><input type="checkbox" data-progress> 我已檢查錯別字、標點和句子是否通順。</label>
+            </div>
+            <table class="rubric">
+              <thead>
+                <tr>
+                  <th>項目</th>
+                  <th>達標表現</th>
+                  <th>進一步挑戰</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>內容</td>
+                  <td>事情完整，中心清楚。</td>
+                  <td>選材有意義，能突出人物成長。</td>
+                </tr>
+                <tr>
+                  <td>結構</td>
+                  <td>起因、經過、結果分明。</td>
+                  <td>能安排轉折，使情節更有張力。</td>
+                </tr>
+                <tr>
+                  <td>描寫</td>
+                  <td>能運用具體句子表達人物心情。</td>
+                  <td>能配合環境描寫或細節描寫烘托感受。</td>
+                </tr>
+                <tr>
+                  <td>語言</td>
+                  <td>句子通順，標點大致正確。</td>
+                  <td>詞語準確，句式有變化。</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="button-row">
+              <button class="btn green" onclick="updateProgress()">更新進度</button>
+              <button class="btn secondary" onclick="switchSection('teacherNotes')">查看教師提示</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="teacherNotes">
+          <div class="section-header">
+            <div>
+              <h2>教師提示</h2>
+              <p>可按一至兩節課使用。若時間不足，可只做導入、句子升級、段落修補和完整寫作任務。</p>
+            </div>
+            <span class="tag">教學流程</span>
+          </div>
+          <div class="section-body">
+            <div class="grid-two">
+              <div class="box">
+                <h3>建議流程：70分鐘</h3>
+                <ol>
+                  <li>導入比較：10分鐘</li>
+                  <li>六要素與情節轉折：15分鐘</li>
+                  <li>人物描寫示範：10分鐘</li>
+                  <li>句子升級及分享：10分鐘</li>
+                  <li>段落修補：15分鐘</li>
+                  <li>寫作任務說明及開首試寫：10分鐘</li>
+                </ol>
+              </div>
+              <div class="box soft-blue">
+                <h3>照顧學習多樣性</h3>
+                <ul>
+                  <li>能力稍弱學生：提供句式「我看見……聽見……心裏……」。</li>
+                  <li>一般學生：要求加入兩種人物描寫。</li>
+                  <li>能力較高學生：加入伏筆、環境烘托或前後呼應。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="box soft-green">
+              <h3>板書重點</h3>
+              <p>好記敘文 = 六要素清楚 + 經過具體 + 情節有轉折 + 人物有反應 + 結尾有感悟。</p>
+            </div>
+            <div class="box soft-gold">
+              <h3>延伸家課</h3>
+              <p>請學生把課堂草稿修訂成完整文章，並用自評表圈出自己最滿意的一句描寫，再寫一句修訂說明：「我改了甚麼？為甚麼這樣改？」</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const sections = Array.from(document.querySelectorAll(".section"));
+    const navButtons = Array.from(document.querySelectorAll("#navModules button"));
+    const progressInputs = Array.from(document.querySelectorAll("[data-progress]"));
+
+    function switchSection(sectionId) {
+      sections.forEach((section) => {
+        section.classList.toggle("active", section.id === sectionId);
+      });
+
+      navButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.section === sectionId);
+      });
+
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => switchSection(button.dataset.section));
+    });
+
+    function toggleAnalysis() {
+      const analysis = document.getElementById("compareAnalysis");
+      analysis.className = "feedback good";
+      analysis.innerHTML = "<strong>分析：</strong>升級版本加入了環境聲音、人物動作、心理感受和結尾感悟。它沒有只說「很緊張」，而是用手心出汗、盯着隊友、耳邊風聲等細節，讓讀者感受到緊張。";
+    }
+
+    function buildPlotPreview() {
+      const fields = [
+        ["平靜開始", "planStart"],
+        ["問題出現", "planProblem"],
+        ["嘗試解決", "planAction"],
+        ["最緊張一刻", "planPeak"],
+        ["結果", "planResult"],
+        ["感悟", "planReflection"],
+      ];
+
+      const preview = document.getElementById("plotPreview");
+      const lines = fields.map(([label, id]) => {
+        const value = document.getElementById(id).value.trim() || "尚未填寫";
+        return `<p><strong>${label}：</strong>${escapeHtml(value)}</p>`;
+      });
+
+      preview.innerHTML = `<strong>情節大綱預覽</strong>${lines.join("")}`;
+      savePlan();
+    }
+
+    function savePlan() {
+      const ids = ["planStart", "planProblem", "planAction", "planPeak", "planResult", "planReflection"];
+      const data = {};
+      ids.forEach((id) => {
+        data[id] = document.getElementById(id).value;
+      });
+      localStorage.setItem("p6NarrativePlan", JSON.stringify(data));
+    }
+
+    function loadPlan() {
+      const raw = localStorage.getItem("p6NarrativePlan");
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        Object.entries(data).forEach(([id, value]) => {
+          const input = document.getElementById(id);
+          if (input) input.value = value;
+        });
+      } catch {
+        localStorage.removeItem("p6NarrativePlan");
+      }
+    }
+
+    function clearPlan() {
+      ["planStart", "planProblem", "planAction", "planPeak", "planResult", "planReflection"].forEach((id) => {
+        document.getElementById(id).value = "";
+      });
+      localStorage.removeItem("p6NarrativePlan");
+      document.getElementById("plotPreview").innerHTML = "<strong>情節大綱預覽</strong><p class=\"small-note\">填寫上方欄位後，按「生成情節大綱」。</p>";
+    }
+
+    function checkSentenceUpgrade() {
+      const input = document.getElementById("upgradeInput");
+      const feedback = document.getElementById("upgradeFeedback");
+      const text = input.value.trim();
+
+      if (!text) {
+        feedback.className = "feedback warn";
+        feedback.textContent = "請先輸入你的升級句子。";
+        return;
+      }
+
+      const detailWords = ["手", "心", "汗", "眼", "聲", "腳", "喉嚨", "呼吸", "顫", "望", "聽", "想", "說"];
+      const hasDetail = detailWords.some((word) => text.includes(word));
+      const enoughLength = text.length >= 24;
+      const hasPlainOnly = text === "我很緊張" || text === "我很害怕";
+
+      if (hasPlainOnly) {
+        feedback.className = "feedback warn";
+        feedback.textContent = "這仍然是空泛句。試試加入動作、心理或感官描寫。";
+      } else if (hasDetail && enoughLength) {
+        feedback.className = "feedback good";
+        feedback.textContent = "寫得具體。你已加入細節，能讓讀者感受到人物的緊張。下一步可檢查句子是否通順。";
+        markProgress(0);
+      } else {
+        feedback.className = "feedback warn";
+        feedback.textContent = "方向正確，但可以再具體一些。試加入手、眼神、聲音、呼吸或心裏想法。";
+      }
+    }
+
+    function insertSentenceExample() {
+      document.getElementById("upgradeInput").value = "我的手心滲出汗水，心跳得像打鼓一樣，連老師叫我的名字也差點聽不見。";
+      checkSentenceUpgrade();
+    }
+
+    function checkParagraphRepair() {
+      const text = document.getElementById("paragraphText").value.trim();
+      const feedback = document.getElementById("paragraphFeedback");
+
+      if (text.length < 60) {
+        feedback.className = "feedback warn";
+        feedback.textContent = "段落仍然較短。請加入更多事情經過和人物反應。";
+        return;
+      }
+
+      const categories = [
+        ["動作", ["握", "低頭", "翻", "拿", "放", "捏", "停"]],
+        ["語言", ["「", "」", "說", "問", "提醒"]],
+        ["心理", ["心", "想", "明白", "後悔", "害怕", "擔心"]],
+        ["環境", ["課室", "聲", "窗", "桌", "安靜", "燈"]],
+      ];
+
+      const found = categories.filter(([, words]) => words.some((word) => text.includes(word))).map(([name]) => name);
+
+      if (found.length >= 2) {
+        feedback.className = "feedback good";
+        feedback.textContent = `有進步。你已加入${found.join("、")}描寫。再檢查結尾是否寫出感悟。`;
+        markProgress(1);
+      } else {
+        feedback.className = "feedback warn";
+        feedback.textContent = "請至少加入兩類描寫，例如動作加心理，或環境加語言。";
+      }
+    }
+
+    function insertParagraphExample() {
+      document.getElementById("paragraphText").value = "中文默書前，課室裏只聽見翻書聲。我低頭看着空白的溫習紙，心裏像壓着一塊石頭。老師把試卷放到我桌上時，我握着筆，卻連第一個詞語也想不起來。那一刻，我才明白平日拖延溫習，最後只會由自己承擔後果。";
+      checkParagraphRepair();
+    }
+
+    function saveDraft() {
+      const draft = document.getElementById("studentDraft").value;
+      localStorage.setItem("p6NarrativeDraft", draft);
+      document.getElementById("draftFeedback").className = "feedback good";
+      document.getElementById("draftFeedback").textContent = "草稿已儲存。下次打開這個 HTML 檔案，可按「載入草稿」繼續。";
+      markProgress(2);
+    }
+
+    function loadDraft() {
+      const draft = localStorage.getItem("p6NarrativeDraft");
+      const feedback = document.getElementById("draftFeedback");
+      if (!draft) {
+        feedback.className = "feedback warn";
+        feedback.textContent = "暫時沒有已儲存的草稿。";
+        return;
+      }
+      document.getElementById("studentDraft").value = draft;
+      updateDraftCount();
+      feedback.className = "feedback good";
+      feedback.textContent = "已載入草稿。";
+    }
+
+    function updateDraftCount() {
+      const draft = document.getElementById("studentDraft").value;
+      const count = Array.from(draft.replace(/\s/g, "")).length;
+      document.getElementById("draftCount").textContent = `${count} 字`;
+    }
+
+    function markProgress(index) {
+      if (progressInputs[index]) {
+        progressInputs[index].checked = true;
+      }
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const checked = progressInputs.filter((input) => input.checked).length;
+      const total = progressInputs.length || 1;
+      const percent = Math.round((checked / total) * 100);
+      document.getElementById("progressText").textContent = `${percent}%`;
+      document.getElementById("progressBar").style.width = `${percent}%`;
+      localStorage.setItem("p6NarrativeProgress", JSON.stringify(progressInputs.map((input) => input.checked)));
+    }
+
+    function loadProgress() {
+      const raw = localStorage.getItem("p6NarrativeProgress");
+      if (!raw) return;
+      try {
+        const values = JSON.parse(raw);
+        values.forEach((checked, index) => {
+          if (progressInputs[index]) progressInputs[index].checked = Boolean(checked);
+        });
+      } catch {
+        localStorage.removeItem("p6NarrativeProgress");
+      }
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    document.getElementById("studentDraft").addEventListener("input", updateDraftCount);
+    progressInputs.forEach((input) => {
+      input.addEventListener("change", updateProgress);
+    });
+
+    loadPlan();
+    loadProgress();
+    updateProgress();
+    updateDraftCount();
+  </script>
+</body>
+</html>

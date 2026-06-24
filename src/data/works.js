@@ -40,6 +40,16 @@ const works = [
     featured: true,
   },
   {
+    id: "narrative-writing-p6",
+    title: "記敘文寫作增潤課程",
+    category: "teaching",
+    description: "小六中文寫作增潤教材，帶領學生掌握記敘文六要素、情節轉折、人物描寫與句子升級",
+    tech: "HTML + CSS + JavaScript",
+    thumbnail: "/images/thumbnails/narrative-writing-p6-cover.jpg",
+    link: "works/narrative-writing-p6.html",
+    featured: true,
+  },
+  {
     id: "mecha-transform",
     title: "機甲變身",
     category: "video",
@@ -66,6 +76,7 @@ export default works;
 export const categories = [
   { key: "all", label: "全部" },
   { key: "web", label: "Web App" },
+  { key: "teaching", label: "教學資源" },
   { key: "video", label: "影片" },
 ];
 
