@@ -81,3 +81,4 @@ export const categories = [
 ];
 
 export const featuredWorks = works.filter((w) => w.featured);
+export const homeFeaturedWorks = featuredWorks.slice(0, 3);

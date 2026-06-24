@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { featuredWorks } from "../data/works";
+import { homeFeaturedWorks } from "../data/works";
 import WorkCard from "../components/WorkCard";
 
 export default function Home() {
@@ -90,7 +90,7 @@ export default function Home() {
 
           {/* Featured cards */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredWorks.map((work) => (
+            {homeFeaturedWorks.map((work) => (
               <WorkCard key={work.id} work={work} />
             ))}
           </div>

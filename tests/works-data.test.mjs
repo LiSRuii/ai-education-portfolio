@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
-import works, { categories } from "../src/data/works.js";
+import works, { categories, homeFeaturedWorks } from "../src/data/works.js";
 
 const repoRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -25,5 +25,13 @@ test("includes the narrative writing enrichment course with deployable assets", 
   assert.ok(
     existsSync(join(repoRoot, "public", work.link)),
     "expected narrative writing HTML page to exist under public/",
+  );
+});
+
+test("limits the home featured work list to the first three featured works", () => {
+  assert.equal(homeFeaturedWorks.length, 3);
+  assert.deepEqual(
+    homeFeaturedWorks.map((work) => work.id),
+    works.filter((work) => work.featured).slice(0, 3).map((work) => work.id),
   );
 });
